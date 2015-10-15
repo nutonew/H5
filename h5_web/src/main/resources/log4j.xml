@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+    <!-- ===================================================================== -->
+    <!-- ===================================================================== -->
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"     
+                value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t:%p] %c - %m%n" />  
+        </layout>  
+
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="levelMin" value="DEBUG" />  
+            <param name="levelMax" value="ERROR" />  
+            <param name="AcceptOnMatch" value="true" />  
+        </filter>  
+    </appender> 
+    
+    <appender name="PROJECT" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/logs/H5/h5web.log"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="info"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t:%p] %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="PROJECT-DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/logs/H5/h5web.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t:%p] %c - %m%n"/>
+        </layout>
+    </appender>
+    
+    
+    <!-- ===================================================================== -->
+    <!-- ===================================================================== -->
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="PROJECT"/>
+    </root>
+</log4j:configuration>
