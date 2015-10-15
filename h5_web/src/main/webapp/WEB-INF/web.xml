@@ -6,7 +6,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/application_main.xml</param-value>
+        <param-value>classpath:spring/application.xml</param-value>
     </context-param>
     <context-param>
         <param-name>log4jConfigLocation</param-name>
@@ -22,19 +22,12 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
-    <!-- H5 初始化-->
-    <servlet>
-        <servlet-name>H5Proxy</servlet-name>
-        <servlet-class>com.plocc.h5.movie.support.helper.H5ServletProxy</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/application_main.xml</param-value>
+            <param-value>classpath:spring/application.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
