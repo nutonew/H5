@@ -50,6 +50,9 @@ public class HttpUtils {
     public static void main(String[] args) {
         String result = get(url);
         String[] res = StringUtils.getRegStringArray(result, "\".+\"", ",");
-        System.out.println(res);
+        for(String param : res){
+            System.out.println(param);
+        }
+
     }
 }

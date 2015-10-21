@@ -23,8 +23,12 @@
 
     <repositories>
         <repository>
+            <id>repo1</id>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
             <id>snapshots</id>
-            <url>http://svn.powerlong.com:8081/nexus/content/repositories/snapshots</url>
+            <url>http://maven.oschina.net/content/groups/public/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
