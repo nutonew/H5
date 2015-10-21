@@ -1,35 +1,32 @@
-package com.nut.one;
+package com.nut.one.comm.utils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by dolphin on 2015/10/15.
+ * Created by dolphin on 2015/10/21.
  */
-@Controller
-public class IndexController {
+public class HttpUtils {
 
     private static String url = "http://hq.sinajs.cn/list=sh601006";
 
-
-    public static void index(){
+    public static String get(String url){
 
         HttpClient client = new DefaultHttpClient();
         HttpGet get = new HttpGet(url);
+        String result = "";
         try {
             HttpResponse response = client.execute(get);
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 InputStream is = response.getEntity().getContent();
-                String result = inStream2String(is);
+                result = inStream2String(is);
                 System.out.println(result);
             }
         } catch (IOException e) {
@@ -37,7 +34,7 @@ public class IndexController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return result;
     }
 
     private static String inStream2String(InputStream is) throws Exception {
@@ -51,7 +48,8 @@ public class IndexController {
     }
 
     public static void main(String[] args) {
-        index();
+        String result = get(url);
+        String[] res = StringUtils.getRegStringArray(result, "\".+\"", ",");
+        System.out.println(res);
     }
-
 }

@@ -176,6 +176,11 @@
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.1.1</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>h5_web</finalName>
